@@ -34,8 +34,12 @@
   .btn-secondary {
     @apply inline-flex items-center justify-center rounded-md border border-border
       bg-surface px-4 py-2.5 text-sm font-semibold text-text-primary
-      transition-colors hover:bg-border/40 focus-visible:outline
+      transition-colors focus-visible:outline
       focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus;
+  }
+
+  .btn-secondary:hover {
+    background-color: color-mix(in srgb, var(--color-border) 40%, var(--color-surface));
   }
 
   .card {
