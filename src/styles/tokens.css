@@ -1,0 +1,12 @@
+:root{
+  --color-ink:#081F5C; --color-primary:#334EAC; --color-primary-hover:#081F5C;
+  --color-secondary:#7096D1; --color-border:#D0E3FF; --color-background:#E7F1FF;
+  --color-surface:#F9FCFF; --color-surface-elevated:#FFFFFF;
+  --color-text-primary:#081F5C; --color-text-secondary:#5B6B94;
+  --color-success:#1B7F4B; --color-warning:#8A5A00; --color-error:#B3261E; --color-info:#334EAC;
+  --color-focus:#334EAC; --color-disabled:#9AA8C7;
+  --radius-sm:8px; --radius-md:12px; --radius-lg:20px; --radius-pill:999px;
+  --tap-min:44px;
+}
+:focus-visible{outline:3px solid var(--color-focus);outline-offset:2px}
+html,body{overflow-x:hidden}

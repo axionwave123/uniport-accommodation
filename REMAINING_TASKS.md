@@ -1,12 +1,10 @@
 # REMAINING_TASKS
-- [ ] Confirm D-04 (guest vs account)
-- [ ] Confirm D-05 (notification channels)
-- [ ] Confirm D-06 (inspection statuses)
-- [ ] Confirm D-07 (view definition)
-- [ ] Confirm D-08 (review rules)
-- [ ] Confirm D-09 (pricing period defaults)
-- [ ] Provide UNIPORT reference coordinates (D-11)
-- [ ] Provide Google Maps / Routes API keys
-- [ ] Provide Supabase project credentials
-- [ ] Approve admin policy before any admin screens
-- [ ] Approve any proposed filters beyond distance
+## Needs the USER
+1. Create GitHub repo; give Grok write access; state branch workflow (default: feature branches + PRs into main).
+2. Create Supabase project -> provide URL + anon key (Grok puts in env, never commit service key).
+3. Create Google Cloud project, enable Maps JavaScript + Routes + Geocoding, restrict key by HTTP referrer; enable billing.
+4. Confirm UNIPORT reference point (D-11).
+5. Confirm/veto D-04..D-09; approve derived semantic colours + font.
+6. Decide hosting (default suggestion: Vercel).
+## Needs Grok
+See GROK_START_HERE.md build order.
