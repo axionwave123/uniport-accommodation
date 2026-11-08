@@ -18,7 +18,7 @@ create table agent_profiles (
   id uuid primary key default gen_random_uuid(),
   user_id uuid unique not null references profiles(id) on delete cascade,
   public_name text not null, bio text, phone text, whatsapp text, avatar_url text,
-  is_verified boolean not null default false, -- no verification process yet; keep false, do not display badge
+  is_verified boolean not null default false,
   created_at timestamptz default now(), updated_at timestamptz default now()
 );
 
@@ -51,7 +51,6 @@ create table property_media (
   kind media_kind not null, url text not null, sort_order int default 0,
   created_at timestamptz default now()
 );
--- enforce at most one overview_video per property via unique partial index
 create unique index property_one_overview on property_media(property_id) where kind = 'overview_video';
 
 create table room_media (
@@ -89,7 +88,7 @@ create table agent_reviews (
   agent_id uuid not null references agent_profiles(id) on delete cascade,
   author_id uuid not null references profiles(id) on delete cascade,
   rating int not null check (rating between 1 and 5), review_text text,
-  status text not null default 'visible', -- visible | reported | hidden
+  status text not null default 'visible',
   created_at timestamptz default now(), updated_at timestamptz default now(),
   unique(agent_id, author_id)
 );
@@ -101,15 +100,14 @@ create table listing_analytics_events (
   event_type text not null, session_hash text, occurred_at timestamptz default now(), metadata jsonb default '{}'
 );
 
-create table route_cache ( -- road distance/time cache; keyed to avoid repeat paid API calls
+create table route_cache (
   property_id uuid not null references properties(id) on delete cascade,
   origin_key text not null, distance_m int not null, duration_s int not null, fetched_at timestamptz default now(),
   primary key(property_id, origin_key)
 );
 
-create table app_config (key text primary key, value jsonb not null); -- e.g. reference_point (D-11)
+create table app_config (key text primary key, value jsonb not null);
 
--- RLS: enable on every table; Grok must write policies per TRACEABILITY_MATRIX + security rules (ownership checks, students cannot edit availability).
 alter table profiles enable row level security;
 alter table agent_profiles enable row level security;
 alter table properties enable row level security;
